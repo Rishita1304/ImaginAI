@@ -1,37 +1,34 @@
 "use client"
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { navLinks } from "@/constants";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "../ui/button";
+
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { navLinks } from "@/constants"
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Button } from "../ui/button"
 
 const MobileNav = () => {
-    const pathname = usePathname();
+  const pathname = usePathname();
+
   return (
     <header className="header">
       <Link href="/" className="flex items-center gap-2 md:py-2">
         <Image
-          src="/assets/images/logo-no-background.png"
+          src="/assets/images/logo-text.svg"
           alt="logo"
-          width={140}
+          width={180}
           height={28}
         />
       </Link>
+
       <nav className="flex gap-2">
         <SignedIn>
           <UserButton afterSignOutUrl="/" />
+
           <Sheet>
             <SheetTrigger>
-              <Image
+              <Image 
                 src="/assets/icons/menu.svg"
                 alt="menu"
                 width={32}
@@ -41,21 +38,24 @@ const MobileNav = () => {
             </SheetTrigger>
             <SheetContent className="sheet-content sm:w-64">
               <>
-                <Image
-                  src="/assets/images/logo-no-background.png"
+                <Image 
+                  src="/assets/images/logo-text.svg"
                   alt="logo"
-                  width={120}
-                  height={28}
+                  width={152}
+                  height={23}
                 />
-                <ul className="header-nav_elements">
+
+              <ul className="header-nav_elements">
               {navLinks.map((link) => {
-                const isActive = link.route === pathname;
+                const isActive = link.route === pathname
+
                 return (
-                  <li
-                    key={link.route} className={`${isActive && 'gradient-text'} p-18 flex whitespace-nowrap text-dark-700`}
-                  >
-                    <Link href={link.route} className="sidebar-link cursor-pointer">
-                      <Image
+                  <li 
+                    className={`${isActive && 'gradient-text'} p-18 flex whitespace-nowrap text-dark-700`}
+                    key={link.route}
+                    >
+                    <Link className="sidebar-link cursor-pointer" href={link.route}>
+                      <Image 
                         src={link.icon}
                         alt="logo"
                         width={24}
@@ -64,13 +64,14 @@ const MobileNav = () => {
                       {link.label}
                     </Link>
                   </li>
-                );
+                )
               })}
-            </ul>
+              </ul>
               </>
             </SheetContent>
           </Sheet>
         </SignedIn>
+
         <SignedOut>
             <Button asChild className="button bg-purple-gradient bg-cover">
               <Link href="/sign-in">Login</Link>
@@ -78,7 +79,7 @@ const MobileNav = () => {
           </SignedOut>
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default MobileNav;
+export default MobileNav

@@ -65,7 +65,7 @@ const Sidebar = () => {
                 )
               })}
 
-              <li className="flex-center cursor-pointer gap-2 p-4">
+              <li className="cursor-pointer gap-2 p-4  w-full whitespace-nowrap rounded-full bg-cover  transition-all hover:bg-purple-100 hover:shadow-inner">
                 <UserButton afterSignOutUrl='/' showName />
               </li>
             </ul>

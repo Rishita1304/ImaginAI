@@ -28,6 +28,7 @@ const Checkout = ({
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
+    console.log(window.location.search)
     if (query.get("success")) {
       toast({
         title: "Order placed!",

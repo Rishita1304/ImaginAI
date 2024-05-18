@@ -13,6 +13,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
   const { userId } = auth();
 
   const image = await getImageById(id);
+  // console.log(image.author.clearId)
 
   return (
     <>
@@ -83,7 +84,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
           />
         </div>
 
-        {userId === image.author.clerkId && (
+        {userId === image.author?.clerkId && (
           <div className="mt-4 space-y-4">
             <Button asChild type="button" className="submit-button capitalize">
               <Link href={`/transformations/${image._id}/update`}>

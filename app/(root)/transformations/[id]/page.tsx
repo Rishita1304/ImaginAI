@@ -13,7 +13,6 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
   const { userId } = auth();
 
   const image = await getImageById(id);
-  // console.log(image.author.clearId)
 
   return (
     <>
